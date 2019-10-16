@@ -57,33 +57,36 @@ const runners = [
 
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
-let fullNames =
-  runners.forEach(function(runners) {
-    console.log(runners.first_name + ' ' + runners.last_name)
+let fullNames = [];
+  runners.forEach(runners => {
+  fullNames.push(`${runners.first_name} ${runners.last_name}`);
   });
     
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
-let firstNamesAllCaps = runners.map(function(runners) {
-  return runners.first_name.toUpperCase();
+let firstNamesAllCaps = [];
+  runners.map((runners,index) => {
+    firstNamesAllCaps[index] = runners.first_name.toUpperCase();
 });
 
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
-let runnersLargeSizeShirt = runners.filter(function(runners){
-  return runners.shirt_size === 'L';
-});
+let runnersLargeSizeShirt = [];
+runnersLargeSizeShirt = runners.filter(runner => 
+  runner.shirt_size === 'L');
+
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = runners.reduce(function(accumulator, currentValue){
-    return accumulator + currentValue.donation
-  }, 0);
+let ticketPriceTotal = [];
+ticketPriceTotal = runners.reduce((currentValue, runners) => {
+  return currentValue + runners.donation;
+}, 0);
 
 console.log(ticketPriceTotal);
 
@@ -92,13 +95,15 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 //.forEach() example of getting all the companies represented in the 5k fun run to send them a thank you note for particpating.
-runners.forEach(function(currentValue){
-    console.log(currentValue.company_name);
+let thankYouCompany = [];
+runners.forEach(runners => {
+  thankYouCompany.push(`Thank you, ${runners.company_name} company for particpating in our 5k Fun Run!`);
 });
+console.log(thankYouCompany);
 
 // Problem 2
 //.filter() example of top 5 donors for the 5k fun run.
-let bigDonations = runners.filter(function(runners){
+let bigDonations = runners.filter(runners => {
   return runners.donation > 265;
 });
 console.log(bigDonations);
