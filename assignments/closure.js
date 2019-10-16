@@ -4,11 +4,14 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
-let kids = 'energy';
-  function Hyper(){
-    return kids;
+const family = ['Mom', 'Dad', 'Kids', 'Pets'];
+  function members(array,callback) {
+    callback(array[3]);
   }
-console.log(Hyper);
+
+  members(family,(favorite) => {
+    console.log(`${favorite} are the most loved in our family!`);
+  })
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
@@ -21,12 +24,7 @@ const counterMaker = () => {
   //      NOTE: This `counter` function, being nested inside `counterMaker`,
   //      "closes over" the `count` variable. It can "see" it in the parent scope!
   // 3- Return the `counter` function.
-  let count = 0;
-    function counter(){
-      count ++;
-      return count;
-    }
-    return counter(1,2);
+
 };
 
 // Example usage: const myCounter = counterMaker();
